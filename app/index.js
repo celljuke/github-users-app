@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, {Component} from 'react';
 import {
   Platform,
@@ -19,11 +13,14 @@ import {
 } from 'react-apollo';
 
 import config from './config';
+import NavigatorService from './services/navigator';
 
 import Search from './screens/search';
+import RepositoryDetail from './screens/repository-detail';
+import UserDetail from './screens/user-detail';
 
 const networkInterface = createNetworkInterface({
-  uri: 'https://api.github.com/graphql'
+  uri: config.GITHUB_GRAPHQL_API_URL
 });
 
 networkInterface.use([
@@ -44,7 +41,9 @@ const apolloClient = new ApolloClient({
 
 const Navigator = StackNavigator(
   {
-    Search: {screen: Search}
+    Search: {screen: Search},
+    RepositoryDetail: {screen: RepositoryDetail},
+    UserDetail: {screen: UserDetail}
   },
   {
     cardStyle: {
@@ -58,7 +57,9 @@ export default class App extends Component<{}> {
   render() {
     return (
       <ApolloProvider client={apolloClient}>
-        <Navigator/>
+        <Navigator ref={navigatorRef => {
+          NavigatorService.setContainer(navigatorRef);
+        }}/>
       </ApolloProvider>
     );
   }

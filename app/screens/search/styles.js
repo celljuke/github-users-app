@@ -8,13 +8,18 @@ const styles = StyleSheet.create({
     paddingRight: 20
   },
   input: {
-    backgroundColor: 'white',
-    fontSize: 15,
-    height: 50,
-    paddingHorizontal: 5,
-    borderRadius: 25,
-    paddingLeft: 25,
-    paddingRight: 25
+    backgroundColor: 'white'
+  },
+  searchButton: {
+    marginTop: 15,
+    height: 50
+  },
+  searchButtonText: {
+    color: '#fff',
+    fontSize: 18
+  },
+  listContainer: {
+    marginTop: 20
   }
 });
 

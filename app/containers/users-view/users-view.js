@@ -1,10 +1,10 @@
 import React from 'react';
 import { gql, graphql } from 'react-apollo';
 
-import RepositoryListView from '../../components/repo-list-view';
+import UserListView from '../../components/user-list-view';
 import LoadingScreen from '../../components/loading-screen';
 
-class SearchResultView extends React.PureComponent {
+class UsersView extends React.PureComponent {
 
   loadMoreEntries = () => {
     if (!this.props.loading) {
@@ -37,8 +37,8 @@ class SearchResultView extends React.PureComponent {
       return <LoadingScreen />;
     } else {
       return (
-        <RepositoryListView
-          repositories={this.props.data.search}
+        <UserListView
+          users={this.props.data.search}
           refreshing={this.props.data.loading}
           onRefresh={() => this.props.data.refetch()}
           onLoadMore={this.loadMoreEntries}
@@ -55,12 +55,6 @@ const SearchQuery = gql`
       nodes {
         ... on Repository {
           id
-          owner {
-            login
-            avatarUrl
-            url
-          }
-          name
           nameWithOwner
           stargazers {
 						totalCount

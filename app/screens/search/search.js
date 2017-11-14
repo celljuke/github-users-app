@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, TextInput, Button, Text} from 'react-native';
+import {View, TextInput, Text} from 'react-native';
 import styles from './styles';
 import SearchResultView from '../../containers/search-result-view';
+import {Container, Header, Content, Item, Input, Button} from 'native-base';
 
 export default class SearchRepositories extends React.PureComponent {
 
@@ -31,7 +32,9 @@ export default class SearchRepositories extends React.PureComponent {
   renderResult() {
     if (this.state.activeSearch) {
       return (
-        <SearchResultView searchText={this.state.activeSearch}/>
+        <View style={styles.listContainer}>
+          <SearchResultView searchText={this.state.activeSearch}/>
+        </View>
       );
     }
   }
@@ -39,12 +42,13 @@ export default class SearchRepositories extends React.PureComponent {
   render = () => (
     <View>
       <View style={styles.formContainer}>
-        <TextInput
-          style={styles.input}
-          value={this.state.searchText}
-          onChangeText={this.handleChange}
-        />
-        <Button title="Search" onPress={this.handlePerformSearch}/>
+        <Item rounded style={styles.input}>
+          <Input placeholder='start typing...' value={this.state.searchText}
+            onChangeText={this.handleChange}/>
+        </Item>
+        <Button style={styles.searchButton} onPress={this.handlePerformSearch} block rounded primary>
+          <Text style={styles.searchButtonText}>Search</Text>
+        </Button>
       </View>
       {this.renderResult()}
     </View>
