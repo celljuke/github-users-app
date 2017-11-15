@@ -47,7 +47,6 @@ const Navigator = StackNavigator(
   },
   {
     cardStyle: {
-      paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
       backgroundColor: '#efefef'
     }
   }

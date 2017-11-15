@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, TextInput, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import styles from './styles';
 import SearchResultView from '../../containers/search-result-view';
-import {Container, Header, Content, Item, Input, Button} from 'native-base';
+import {Item, Input, Button} from 'native-base';
 
-export default class SearchRepositories extends React.PureComponent {
+export default class Search extends React.PureComponent {
 
   static navigationOptions = {
     title: 'Search for Repositories'
